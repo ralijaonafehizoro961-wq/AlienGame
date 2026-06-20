@@ -18,3 +18,8 @@ while running:
         if event.type == pygame.QUIT:
             running = False
             pygame.quit()
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_RIGHT:
+                print("Deplacement vers la droite")
+            elif event.key == pygame.K_LEFT:
+                print("Deplacement vers la gauche") 
