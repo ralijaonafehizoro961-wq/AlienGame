@@ -12,6 +12,10 @@ running  = True
 while running:
     screen.blit(background,(0, -200))
     screen.blit(game.player.image, game.player.rect)
+    if game.pressed.get(pygame.K_RIGHT):
+        game.player.move_right()
+    elif game.pressed.get(pygame.K_LEFT):
+            game.player.move_left()
 
     pygame.display.flip()
     for event in pygame.event.get():
@@ -19,7 +23,6 @@ while running:
             running = False
             pygame.quit()
         elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_RIGHT:
-                print("Deplacement vers la droite")
-            elif event.key == pygame.K_LEFT:
-                print("Deplacement vers la gauche") 
+            game.pressed[event.key] = True
+        elif event.type == pygame.KEYUP:
+            game.pressed[event.key] = False
